@@ -600,10 +600,22 @@ public class AddressBook {
      * @return feedback display message for the operation result
      */
 
-    private static String executeChangePhoneOfPerson(String commandArgs) {return "";}
-    private static void isChangePhoneOfPersonArgsValid(String rawArgs) {}
-    private static void extractTargetIndexFromChangePhoneOfPersonArgs(String rawArgs) {}
-    private static void getMessageForSuccessfulChangePhone(String[] changedPerson ) {}
+    private static String executeChangePhoneOfPerson(String commandArgs) {
+        if (!isChangePhoneOfPersonArgsValid(commandArgs)) {
+            return getMessageForInvalidCommandInput(COMMAND_CHANGEPHONE_WORD, getUsageInfoForChangePhoneCommand());
+        }
+        final int targetVisibleIndex = extractTargetIndexFromChangePhoneOfPersonArgs(commandArgs);
+        if (!isDisplayIndexValidForLastPersonListingView(targetVisibleIndex)) {
+            return MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        }
+        final String[] targetInModel = getPersonByLastVisibleIndex(targetVisibleIndex);
+        return changePhoneOfPersonInAddressBook(targetInModel) ? getMessageForSuccessfulChangePhone(targetInModel) // success
+                                                               : MESSAGE_PERSON_NOT_IN_ADDRESSBOOK; // not found
+    }
+
+    private static boolean isChangePhoneOfPersonArgsValid(String rawArgs) {return true;}
+    private static int extractTargetIndexFromChangePhoneOfPersonArgs(String rawArgs) {return 0;}
+    private static String getMessageForSuccessfulChangePhone(String[] changedPerson ) {return "";}
 
 
     /*
@@ -846,7 +858,7 @@ public class AddressBook {
         ALL_PERSONS.addAll(persons);
     }
 
-    private static void changePhoneOfPersonInAddressBook(String[] exactPerson) {}
+    private static boolean changePhoneOfPersonInAddressBook(String[] exactPerson) {return true;}
 
 
     /*
@@ -1159,7 +1171,7 @@ public class AddressBook {
     }
 
     /** Returns the string for showing 'changephone' command usage instruction */
-    private static void getUsageInfoForChangePhoneCommand() {}
+    private static String getUsageInfoForChangePhoneCommand() {return "";}
 
 
     /*
