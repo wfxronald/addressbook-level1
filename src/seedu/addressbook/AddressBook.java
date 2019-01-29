@@ -70,6 +70,7 @@ public class AddressBook {
     private static final String MESSAGE_COMMAND_HELP = "%1$s: %2$s";
     private static final String MESSAGE_COMMAND_HELP_PARAMETERS = "\tParameters: %1$s";
     private static final String MESSAGE_COMMAND_HELP_EXAMPLE = "\tExample: %1$s";
+    private static final String MESSAGE_CHANGE_PHONE_SUCCESS = "Successfully Changed Phone Number Of: %l$s";
     private static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
     private static final String MESSAGE_DISPLAY_PERSON_DATA = "%1$s  Phone Number: %2$s  Email: %3$s";
     private static final String MESSAGE_DISPLAY_LIST_ELEMENT_INDEX = "%1$d. ";
@@ -615,7 +616,17 @@ public class AddressBook {
 
     private static boolean isChangePhoneOfPersonArgsValid(String rawArgs) {return true;}
     private static int extractTargetIndexFromChangePhoneOfPersonArgs(String rawArgs) {return 0;}
-    private static String getMessageForSuccessfulChangePhone(String[] changedPerson ) {return "";}
+
+    /**
+     * Constructs a feedback message for a successful change phone command execution.
+     *
+     * @see #executeChangePhoneOfPerson(String)
+     * @param changedPerson successfully changed
+     * @return successful change phone feedback message
+     */
+    private static String getMessageForSuccessfulChangePhone(String[] changedPerson ) {
+        return String.format(MESSAGE_CHANGE_PHONE_SUCCESS, getMessageForFormattedPersonData(changedPerson));
+    }
 
 
     /*
