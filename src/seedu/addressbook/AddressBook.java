@@ -133,7 +133,7 @@ public class AddressBook {
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
-    private static final String COMMAND_CHANGEPHONE_WORDS = "changephone";
+    private static final String COMMAND_CHANGEPHONE_WORD = "changephone";
     private static final String COMMAND_CHANGEPHONE_DESC = "Changes the phone number of the person identified"
                                                          + "if found in the address book.";
     private static final String COMMAND_CHANGEPHONE_EXAMPLE = COMMAND_CHANGEPHONE_WORD + " John Doe p/12345678";
@@ -388,6 +388,8 @@ public class AddressBook {
             return getUsageInfoForAllCommands();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
+        case COMMAND_CHANGEPHONE_WORD:
+            return executeChangePhoneOfPerson(commandArgs);
         default:
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
@@ -590,6 +592,19 @@ public class AddressBook {
     private static void executeExitProgramRequest() {
         exitProgram();
     }
+
+    /**
+     * Changes the phone number of the person identified, if found in the address book.
+     *
+     * @param commandArgs full command args string from the user
+     * @return feedback display message for the operation result
+     */
+
+    private static String executeChangePhoneOfPerson(String commandArgs) {return "";}
+    private static void isChangePhoneOfPersonArgsValid(String rawArgs) {}
+    private static void extractTargetIndexFromChangePhoneOfPersonArgs(String rawArgs) {}
+    private static void getMessageForSuccessfulChangePhone(String[] changedPerson ) {}
+
 
     /*
      * ===========================================
@@ -830,6 +845,8 @@ public class AddressBook {
         ALL_PERSONS.clear();
         ALL_PERSONS.addAll(persons);
     }
+
+    private static void changePhoneOfPersonInAddressBook(String[] exactPerson) {}
 
 
     /*
@@ -1140,6 +1157,9 @@ public class AddressBook {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_EXIT_DESC)
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE);
     }
+
+    /** Returns the string for showing 'changephone' command usage instruction */
+    private static void getUsageInfoForChangePhoneCommand() {}
 
 
     /*
