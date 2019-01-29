@@ -133,6 +133,11 @@ public class AddressBook {
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
+    private static final String COMMAND_CHANGEPHONE_WORDS = "changephone";
+    private static final String COMMAND_CHANGEPHONE_DESC = "Changes the phone number of the person identified"
+                                                         + "if found in the address book.";
+    private static final String COMMAND_CHANGEPHONE_EXAMPLE = COMMAND_CHANGEPHONE_WORD + " John Doe p/12345678";
+
     private static final String DIVIDER = "===================================================";
 
 
